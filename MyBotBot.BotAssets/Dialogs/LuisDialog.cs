@@ -9,7 +9,7 @@ using System.Threading;
 namespace MyBotBot.BotAssets.Dialogs
 {
     [Serializable]
-    [LuisModel("ModelId", "SubscriptionKey")]
+    [LuisModel("modelId", "subscriptionKey")]
     public class LuisDialog : LuisDialog<object>
     {
         [LuisIntent("")]
@@ -27,13 +27,13 @@ namespace MyBotBot.BotAssets.Dialogs
         [LuisIntent("Help")]
         public async Task Help(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("Hi! Try asking me things like 'search hotels in Seattle', 'search hotels near LAX airport' or 'show me the reviews of The Bot Resort'");
+            await context.PostAsync("Hi! Try asking me things like 'I would like to make a suggestion', 'how do I do a password reset bot' or 'where can I get sample applications'");
 
             context.Wait(this.MessageReceived);
         }
 
         [LuisIntent("Suggestion")]
-        public async Task FindCode(IDialogContext context, LuisResult result)
+        public async Task Suggestion(IDialogContext context, LuisResult result)
         {
             string message = "Thanks for offering to make a suggestion. What would you like to suggest?";
 
