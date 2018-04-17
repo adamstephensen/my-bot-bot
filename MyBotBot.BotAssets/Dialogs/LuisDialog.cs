@@ -9,9 +9,22 @@ using System.Threading;
 namespace MyBotBot.BotAssets.Dialogs
 {
     [Serializable]
-    [LuisModel("modelId", "subscriptionKey")]
+    //[LuisModel(, )]
     public class LuisDialog : LuisDialog<object>
     {
+        //from https://github.com/Microsoft/BotBuilder/issues/3855
+        public LuisDialog() : base(new LuisService(GetLUISAttributesFromConfig()))
+        {
+           // customerInsightsDialog = new InsightsDialog();
+        }
+        //public LuisDialog() : base(new LuisService(
+        // new LuisModel("9487773cba034e35be25bf4106542a2d", "78c0b845-84e7-4a32-9c58-2b18a7b7e83b")))
+        //{
+        //}
+        public static LuisModelAttribute GetLUISAttributesFromConfig()
+        {
+            return new LuisModelAttribute(Constants.LuisModelId, Constants.LuisSubscriptionKey);
+        }
         [LuisIntent("")]
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
@@ -19,6 +32,11 @@ namespace MyBotBot.BotAssets.Dialogs
             string message = $"Sorry, I did not understand '{result.Query}'. Type 'help' if you need assistance.";
 
             await context.PostAsync(message);
+
+            context.Wait(this.MessageReceived);
+
+            // You can forward to QnA Dialog, and let Qna Maker handle the user's query if no intent is found
+            await context.Forward(new BotQnaDialog(), ResumeAfterQnaDialog, context.Activity, CancellationToken.None);
 
             context.Wait(this.MessageReceived);
         }
@@ -43,6 +61,11 @@ namespace MyBotBot.BotAssets.Dialogs
         }
 
 
+        private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Done<object>(null);
+
+        }
         private async Task ResumeAfterFormOption(IDialogContext context, IAwaitable<object> result)
         {
             context.Done<object>(null);

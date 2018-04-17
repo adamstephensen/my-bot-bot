@@ -124,8 +124,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Dialogs\LuisDialog.cs" />
+    <Compile Include="Dialogs\BotQnaDialog.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Dialogs\SuggestionDialog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
