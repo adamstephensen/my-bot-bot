@@ -21,7 +21,7 @@ namespace MyBotBot.BotAssets.Dialogs
         {
             var suggestion = await result;
             //todo: actually lodge the suggestion
-            await context.PostAsync($"Lodging suggestion: '{suggestion}'.");
+            await context.PostAsync($"Lodging suggestion: '{suggestion.Text}'.");
 
         }
     }

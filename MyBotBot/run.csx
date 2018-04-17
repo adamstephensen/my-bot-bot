@@ -32,7 +32,7 @@ namespace MyBotBot
                     {
                         case ActivityTypes.Message:
                             //here is where we will navigate to root dialogue
-                            await Conversation.SendAsync(activity, () => new LuisDialog());
+                            await Conversation.SendAsync(activity, () => new RootDialog());
 
                             //var client = new ConnectorClient(new Uri(activity.ServiceUrl));
                             //var triggerReply = activity.CreateReply();
