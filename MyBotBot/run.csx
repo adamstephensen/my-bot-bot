@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Bot.Builder.Azure;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using MyBotBot.BotAssets.Dialogs;
 using Newtonsoft.Json;
 
 namespace MyBotBot
@@ -30,12 +32,12 @@ namespace MyBotBot
                     {
                         case ActivityTypes.Message:
                             //here is where we will navigate to root dialogue
-                            //await Conversation.SendAsync(activity, () => new RootDialog());
+                            await Conversation.SendAsync(activity, () => new LuisDialog());
 
-                            var client = new ConnectorClient(new Uri(activity.ServiceUrl));
-                            var triggerReply = activity.CreateReply();
-                            triggerReply.Text = "Hey";
-                            await client.Conversations.ReplyToActivityAsync(triggerReply);
+                            //var client = new ConnectorClient(new Uri(activity.ServiceUrl));
+                            //var triggerReply = activity.CreateReply();
+                            //triggerReply.Text = "Hey";
+                            //await client.Conversations.ReplyToActivityAsync(triggerReply);
 
                             break;
                         default:

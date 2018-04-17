@@ -27,4 +27,9 @@ Check out https://docs.microsoft.com/en-us/azure/bot-service/bot-service-design-
 ## Can I do Human hand off ?
 Check out https://docs.microsoft.com/en-us/azure/bot-service/bot-service-design-pattern-handoff-human
 
+## How do I go to Kudu for by bot ? 
+Just go to https://<your-bot-name->.scm.azurewebsites.net
+
+## How do I create a LUIS endpoint key ?
+Easy. Check this out https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription
 
