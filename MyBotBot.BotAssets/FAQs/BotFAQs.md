@@ -33,3 +33,6 @@ Just go to https://<your-bot-name->.scm.azurewebsites.net
 ## How do I create a LUIS endpoint key ?
 Easy. Check this out https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription
 
+## How do I handle global messages ?
+You implement them like this https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-global-handlers
+
