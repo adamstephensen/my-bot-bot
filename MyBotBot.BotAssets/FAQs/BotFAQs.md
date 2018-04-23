@@ -55,6 +55,7 @@ To build a password reset bot check out https://docs.microsoft.com/en-us/azure/b
 
 ## Can I do Human hand off ?
 You can configure your bot to connect a user with a real person using the human hand off pattern. Check out https://docs.microsoft.com/en-us/azure/bot-service/bot-service-design-pattern-handoff-human
+https://blogs.msdn.microsoft.com/jamiedalton/2017/08/10/microsoft-bot-framework-handing-off-to-a-human-for-agentssupervisors-with-c-and-the-botbuilder-sdk/
 
 ## How do I go to Kudu for by bot ? 
 Just go to https://<your-bot-name->.scm.azurewebsites.net
@@ -84,9 +85,22 @@ Look for the implementations of
 - context.Fail
 
 Check out the following links about navigating and building dialogues: 
+- https://docs.microsoft.com/en-gb/bot-framework/bot-service-design-conversation-flow
 - https://blog.botframework.com/2017/11/10/dialog-management-qna-luis-scorables/
 - http://www.garypretty.co.uk/2017/03/26/forwarding-activities-messages-to-other-dialogs-in-microsoft-bot-framework/
+
+Watch out for some pitfalls with bot design navigation
+- https://docs.microsoft.com/en-gb/bot-framework/bot-service-design-navigation
 
 ## How can I get app settings into my bot?
 The trick is to put them into local.settings.json on your dev machine and then to read them from App Settings in Azure.
 Check out https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#environment-variables for more info. 
+
+## What are the common mistakes ? 
+There are a lot of common mistakes made with bots.
+1. Bad navigation https://docs.microsoft.com/en-gb/bot-framework/bot-service-design-navigation
+2. Having a bot that tries to do too much. You are better off having several small bots that do a specific task very well.
+3. Trying to make your bot too 'smart'. The best bots aren't the smartest bots. The best bots are the ones that solve an issue that users have. A simple bot that guides a user to a solution will be well utilised. A 'smart' bot that is hard to use will not.
+
+## Can I get a list of all the questions or FAQs ?
+All the FAQs in this bot can be found here https://github.com/adamstephensen/my-bot-bot/blob/master/MyBotBot.BotAssets/FAQs/BotFAQs.md
