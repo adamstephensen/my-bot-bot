@@ -8,10 +8,11 @@ Sure can. Check out the following:
 # Documentation
 
 ## Where can I find documentation ?
-QnA Maker https://qnamaker.ai
-LUIS https://www.luis.ai/
-Azure Bot Service Documentation https://docs.microsoft.com/en-us/azure/bot-service/
-The bot framework developer portal https://dev.botframework.com/
+There is lots of great documentation on bots.
+- QnA Maker https://qnamaker.ai
+- LUIS https://www.luis.ai/
+- Azure Bot Service Documentation https://docs.microsoft.com/en-us/azure/bot-service/
+- The bot framework developer portal https://dev.botframework.com/
 
 ## Where can I get sample applications ? 
 There are heaps of awesome samples here https://github.com/Microsoft/BotBuilder-Samples
