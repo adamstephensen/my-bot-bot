@@ -57,3 +57,5 @@ Easy. Check this out https://docs.microsoft.com/en-us/azure/cognitive-services/l
 ## How do I handle global messages ?
 You implement them like this https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-global-handlers
 
+## How can I learn about async await for asynchronous programming ? 
+Check out this reference for async / await https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/await?
