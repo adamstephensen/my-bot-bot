@@ -1,17 +1,11 @@
-# General
-
 ## What is a bot ? 
 A bot is an app that users interact with in a conversational way. Bots can communicate conversationally with text, cards, or speech.
 For more info check out https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction 
-
-# Demonstrations
 
 ## Can I see some good demos ? 
 Sure can. Check out the following: 
 1. The Microsoft Health Bot http://aka.ms/ai/healthbot
 2. 'Sam' - a public-facing chatbot for DHS https://www.humanservices.gov.au/individuals/students-and-trainees
-
-# Documentation
 
 ## Where can I find documentation ?
 There is lots of great documentation on bots.
