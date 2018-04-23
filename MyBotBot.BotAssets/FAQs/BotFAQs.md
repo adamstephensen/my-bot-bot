@@ -31,6 +31,10 @@ Check out https://docs.microsoft.com/en-us/azure/azure-functions/functions-refer
 ## Can I use LUIS and QnAMaker together. 
 Easy. Check this out http://www.garypretty.co.uk/2017/03/26/forwarding-activities-messages-to-other-dialogs-in-microsoft-bot-framework/
 
+## Can I add a message whent he bot loads ? 
+Of course. 
+Here are some instructions. https://www.davidezordan.net/blog/?p=8119
+
 ## Can I leverage Ai ?
 Check out https://docs.microsoft.com/en-us/azure/bot-service/bot-service-concept-intelligence
 
