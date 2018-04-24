@@ -1,4 +1,3 @@
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,6 +16,7 @@ namespace MyBotBot
         [FunctionName("messages")]
         public static async Task<object> Run([HttpTrigger(WebHookType = "genericJson")]HttpRequestMessage req, TraceWriter log)
         {
+            
             // Initialize the azure bot
             using (BotService.Initialize())
             {

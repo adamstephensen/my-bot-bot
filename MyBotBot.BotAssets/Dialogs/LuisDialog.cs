@@ -5,6 +5,8 @@ using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Connector;
 using System.Threading;
+using MyBotBot.BotAssets.Extensions;
+using System.Configuration;
 
 namespace MyBotBot.BotAssets.Dialogs
 {
@@ -13,18 +15,12 @@ namespace MyBotBot.BotAssets.Dialogs
     public class LuisDialog : LuisDialog<object>
     {
         //from https://github.com/Microsoft/BotBuilder/issues/3855
-        public LuisDialog() : base(new LuisService(GetLUISAttributesFromConfig()))
+        public LuisDialog() : base(new LuisService(new LuisModelAttribute(
+                ConfigurationManager.AppSettings[AppSettings.LuisAppId],
+                ConfigurationManager.AppSettings[AppSettings.LuisSubscriptionKey])))
         {
-           // customerInsightsDialog = new InsightsDialog();
-        }
-        //public LuisDialog() : base(new LuisService(
-        // new LuisModel("9487773cba034e35be25bf4106542a2d", "78c0b845-84e7-4a32-9c58-2b18a7b7e83b")))
-        //{
-        //}
-        public static LuisModelAttribute GetLUISAttributesFromConfig()
-        {
-            return new LuisModelAttribute(Constants.LuisModelId, Constants.LuisSubscriptionKey);
-        }
+        }        
+        
         [LuisIntent("")]
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)

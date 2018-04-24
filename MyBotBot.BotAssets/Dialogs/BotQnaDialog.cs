@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using MyBotBot.BotAssets.Extensions;
+using System.Configuration;
 
 namespace MyBotBot.BotAssets.Dialogs
 {
     class BotQnaDialog : QnAMakerDialog
     {
         public BotQnaDialog() : base(new QnAMakerService(
-           new QnAMakerAttribute(Constants.QnaSubscriptionKey,Constants.QnaKBId )))
+           new QnAMakerAttribute(
+               ConfigurationManager.AppSettings[AppSettings.QnaSubscriptionKey],
+               ConfigurationManager.AppSettings[AppSettings.QnaKBId])))
         {
         }
 
