@@ -123,11 +123,11 @@ Function bots easy integrate with other Azure services like Logic Apps, Service 
 You don't need to host your application on the MVC framework.
 You have your run.csx.. and it executes your bot.
 
-# Should my dialogues hand off from LUIS to Qna or from Qna To LUIS
+## Should my dialogues hand off from LUIS to Qna or from Qna To LUIS
 It depends.
 Some people like to make LUIS the master and if no LUIS intent is identified hand off to QnA maker to return a QnA match.
 Others prefer to capture as much as possible in QnA and then pass to LUIS.
 One consideration is that calls to QnA Maker are currently Free (as at 24 April 2018) where you pay a very small amount for every LUIS request. 
 
-# How do I build a multi-lingual bot ? 
+## How do I build a multi-lingual bot ? 
 Check out this link https://desflanagan.wordpress.com/2016/10/25/build-a-multi-language-bot/ 
