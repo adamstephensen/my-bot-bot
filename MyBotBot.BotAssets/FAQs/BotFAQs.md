@@ -112,13 +112,22 @@ Function bot can take a few seconds to warm up if it hasn't been hit for a while
 2. More control over how the bot scales / Predictable costing
 What a web bot you control how much the bot scales.
 
-Here are the benefits of going for a function bot
+Here are the benefits of going for a Function Bot
 1. Pay as you use - per second billing
 If no-one is using your bot, you will not pay for it
 2. Infitinte scale without any need to configure scaling rules.
 Scaling just comes in with the platform
 3. Easy integration with other Azure services.
-Function bots easy integrate with other services like Logic Apps, Service Bus, Cosmos db.
+Function bots easy integrate with other Azure services like Logic Apps, Service Bus, Cosmos DB, Table Storage, Storage Queues.
 4. Simplification of Development
 You don't need to host your application on the MVC framework.
 You have your run.csx.. and it executes your bot.
+
+# Should my dialogues hand off from LUIS to Qna or from Qna To LUIS
+It depends.
+Some people like to make LUIS the master and if no LUIS intent is identified hand off to QnA maker to return a QnA match.
+Others prefer to capture as much as possible in QnA and then pass to LUIS.
+One consideration is that calls to QnA Maker are currently Free (as at 24 April 2018) where you pay a very small amount for every LUIS request. 
+
+# How do I build a multi-lingual bot ? 
+Check out this link https://desflanagan.wordpress.com/2016/10/25/build-a-multi-language-bot/ 
