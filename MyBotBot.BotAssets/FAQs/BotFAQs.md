@@ -98,3 +98,27 @@ There are a lot of common mistakes made with bots.
 
 ## Can I get a list of all the questions or FAQs ?
 All the FAQs in this bot can be found here https://github.com/adamstephensen/my-bot-bot/blob/master/MyBotBot.BotAssets/FAQs/BotFAQs.md
+
+## How do I setup my machine for bot development ? 
+I'm still working on this… check back soon.
+
+## What are the options for deploying my bot using ci/cd and devops ? 
+I'm still working on this… check back soon.
+
+## What are the pros and cons of function bots over web bots
+What are the benefits of going for a Web Bot
+1. Web bot is always on - No Warm up time
+Function bot can take a few seconds to warm up if it hasn't been hit for a while
+2. More control over how the bot scales / Predictable costing
+What a web bot you control how much the bot scales.
+
+Here are the benefits of going for a function bot
+1. Pay as you use - per second billing
+If no-one is using your bot, you will not pay for it
+2. Infitinte scale without any need to configure scaling rules.
+Scaling just comes in with the platform
+3. Easy integration with other Azure services.
+Function bots easy integrate with other services like Logic Apps, Service Bus, Cosmos db.
+4. Simplification of Development
+You don't need to host your application on the MVC framework.
+You have your run.csx.. and it executes your bot.
