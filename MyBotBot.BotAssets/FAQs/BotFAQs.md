@@ -18,13 +18,34 @@ There is lots of great documentation on bots.
 ## Where can I get sample applications ? 
 There are heaps of awesome samples here https://github.com/Microsoft/BotBuilder-Samples
 
-## Where can I learn about navigation ? 
-Navigation is easy once you understand using dialogs. Check this out... 
-https://github.com/Microsoft/BotBuilder-Samples/blob/master/CSharp/core-MultiDialogs/README.md
-
 ## What templates are available for building bots.
 There are 5 templates out of the box.
+1. Basic bot
+2. Form bot
+3. Language Understanding bot
+4. Question and Answer bot
+5. Proactive bot
 https://docs.microsoft.com/en-gb/azure/bot-service/bot-service-concept-templates
+
+The important point to make here is that these are out of the box tempates that each demonstrate a single piece of functionality. It is very common to incorporate all of these features in one bot.
+
+## What are the pros and cons of function bots over web bots
+What are the benefits of going for a Web Bot
+1. Web bot is always on - No Warm up time
+Function bot can take a few seconds to warm up if it hasn't been hit for a while
+2. More control over how the bot scales / Predictable costing
+What a web bot you control how much the bot scales.
+
+Here are the benefits of going for a Function Bot
+1. Pay as you use - per second billing
+If no-one is using your bot, you will not pay for it
+2. Infitinte scale without any need to configure scaling rules.
+Scaling just comes in with the platform
+3. Easy integration with other Azure services.
+Function bots easy integrate with other Azure services like Logic Apps, Service Bus, Cosmos DB, Table Storage, Storage Queues.
+4. Simplification of Development
+You don't need to host your application on the MVC framework.
+You have your run.csx.. and it executes your bot.
 
 ## How do I get app settings into my bot?
 The trick is to put them into local.settings.json on your dev machine and then to read them from App Settings in Azure.
@@ -34,11 +55,20 @@ Check out https://docs.microsoft.com/en-us/azure/azure-functions/functions-refer
 Luis and QnA maker love hanging out together.
 Check this out http://www.garypretty.co.uk/2017/03/26/forwarding-activities-messages-to-other-dialogs-in-microsoft-bot-framework/
 
-## Can I add a message whent he bot loads ? 
+## How do I create a LUIS endpoint key ?
+Easy. Check this out https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription
+
+## Should my dialogues hand off from LUIS to Qna or from Qna To LUIS
+It depends.
+Some people like to make LUIS the master and if no LUIS intent is identified hand off to QnA maker to return a QnA match.
+Others prefer to capture as much as possible in QnA and then pass to LUIS.
+One consideration is that calls to QnA Maker are currently Free (as at 24 April 2018) where you pay a very small amount for every LUIS request. 
+
+## Can I add a message when the bot loads ? 
 Even though no-one shows you how to do it... of course you can add a message when the bot loads. 
 Here are some instructions. https://www.davidezordan.net/blog/?p=8119
 
-## Can I leverage Ai ?
+## Can I leverage AI ?
 To learn about leveraging AI with bots check out https://docs.microsoft.com/en-us/azure/bot-service/bot-service-concept-intelligence
 
 ## Is there a commerce demo ? 
@@ -54,14 +84,19 @@ https://blogs.msdn.microsoft.com/jamiedalton/2017/08/10/microsoft-bot-framework-
 ## How do I go to Kudu for by bot ? 
 Just go to https://<your-bot-name->.scm.azurewebsites.net
 
-## How do I create a LUIS endpoint key ?
-Easy. Check this out https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription
-
 ## How do I handle global messages ?
 You implement global messages like this https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-global-handlers
 
+## How can I get app settings into my bot?
+The trick is to put them into local.settings.json on your dev machine and then to read them from App Settings in Azure.
+Check out https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#environment-variables for more info. 
+
 ## How can I learn about async await for asynchronous programming ? 
 Check out this reference for async / await https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/await?
+
+## Where can I learn about navigation ? 
+Navigation is easy once you understand using dialogs. Check this out... 
+https://github.com/Microsoft/BotBuilder-Samples/blob/master/CSharp/core-MultiDialogs/README.md
 
 ## Can you help me understand the dialog lifecycle and navigating dialogs ?
 You might need to read this a few times.. but it's important.
@@ -86,10 +121,6 @@ Check out the following links about navigating and building dialogues:
 Watch out for some pitfalls with bot design navigation
 - https://docs.microsoft.com/en-gb/bot-framework/bot-service-design-navigation
 
-## How can I get app settings into my bot?
-The trick is to put them into local.settings.json on your dev machine and then to read them from App Settings in Azure.
-Check out https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#environment-variables for more info. 
-
 ## What are the common mistakes ? 
 There are a lot of common mistakes made with bots.
 1. Bad navigation https://docs.microsoft.com/en-gb/bot-framework/bot-service-design-navigation
@@ -104,30 +135,6 @@ I'm still working on this… check back soon.
 
 ## What are the options for deploying my bot using ci/cd and devops ? 
 I'm still working on this… check back soon.
-
-## What are the pros and cons of function bots over web bots
-What are the benefits of going for a Web Bot
-1. Web bot is always on - No Warm up time
-Function bot can take a few seconds to warm up if it hasn't been hit for a while
-2. More control over how the bot scales / Predictable costing
-What a web bot you control how much the bot scales.
-
-Here are the benefits of going for a Function Bot
-1. Pay as you use - per second billing
-If no-one is using your bot, you will not pay for it
-2. Infitinte scale without any need to configure scaling rules.
-Scaling just comes in with the platform
-3. Easy integration with other Azure services.
-Function bots easy integrate with other Azure services like Logic Apps, Service Bus, Cosmos DB, Table Storage, Storage Queues.
-4. Simplification of Development
-You don't need to host your application on the MVC framework.
-You have your run.csx.. and it executes your bot.
-
-## Should my dialogues hand off from LUIS to Qna or from Qna To LUIS
-It depends.
-Some people like to make LUIS the master and if no LUIS intent is identified hand off to QnA maker to return a QnA match.
-Others prefer to capture as much as possible in QnA and then pass to LUIS.
-One consideration is that calls to QnA Maker are currently Free (as at 24 April 2018) where you pay a very small amount for every LUIS request. 
 
 ## How do I build a multi-lingual bot ? 
 Check out this link https://desflanagan.wordpress.com/2016/10/25/build-a-multi-language-bot/ 
