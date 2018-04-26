@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+
+    "LuisAppId": "Insert your LUIS app Id here",
+    "LuisSubscriptionKey": "Insert your LUIS Subscription key here",
+
+    "QnaKBId": "Insert your Qna KB Id here",
+    "QnaSubscriptionKey": "Insert your Qna Subscription key here"
+  }
+}
