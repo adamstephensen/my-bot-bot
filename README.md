@@ -14,3 +14,11 @@ This repository has been put together to demonstrate some common scenarios using
 
 ## Where can I find out more
 Check out the [Bot FAQs](https://github.com/adamstephensen/my-bot-bot/blob/master/MyBotBot.BotAssets/FAQs/BotFAQs.md)
+
+## Disclaimer
+
+This IS NOT production code.
+
+This is a quickly assembled sample application intended to demonstrate a few features of the Azure bot service.
+
+I hope you learn some cool things from my demo code ! 
