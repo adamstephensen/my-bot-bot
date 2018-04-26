@@ -18,6 +18,9 @@ There is lots of great documentation on bots.
 ## Where can I get sample applications ? 
 There are heaps of awesome samples here https://github.com/Microsoft/BotBuilder-Samples
 
+Also, the code for @adamstephensen's bot about bots is here https://github.com/adamstephensen/my-bot-bot
+It demonstrates some functionality not in the official bot samples, including how to build a bot on Azure Functions.
+
 ## What templates are available for building bots.
 There are 5 templates out of the box.
 1. Basic bot
