@@ -7,6 +7,7 @@ using Microsoft.Bot.Connector;
 using System.Threading;
 using MyBotBot.BotAssets.Extensions;
 using System.Configuration;
+using QnAMakerDialog;
 
 namespace MyBotBot.BotAssets.Dialogs
 {
@@ -19,22 +20,17 @@ namespace MyBotBot.BotAssets.Dialogs
                 ConfigurationManager.AppSettings[AppSettings.LuisAppId],
                 ConfigurationManager.AppSettings[AppSettings.LuisSubscriptionKey])))
         {
-        }        
-        
+        }
+
         [LuisIntent("")]
         [LuisIntent("None")]
-        public async Task None(IDialogContext context, LuisResult result)
+        public async Task None(IDialogContext context, IAwaitable<IMessageActivity> message, LuisResult result)
         {
-            string message = $"Sorry, I did not understand '{result.Query}'. Type 'help' if you need assistance.";
-
-            await context.PostAsync(message);
-
-            context.Wait(this.MessageReceived);
-
+            var messageToForward = await message; //or context.Activity
+            var faqDialog = new BotQnaDialog();
             // You can forward to QnA Dialog, and let Qna Maker handle the user's query if no intent is found
-            await context.Forward(new BotQnaDialog(), ResumeAfterQnaDialog, context.Activity, CancellationToken.None);
+            await context.Forward<bool>(faqDialog, ResumeAfterQnaDialog, messageToForward, CancellationToken.None);
 
-            context.Wait(this.MessageReceived);
         }
 
 
@@ -57,9 +53,16 @@ namespace MyBotBot.BotAssets.Dialogs
         }
 
 
-        private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<object> result)
+        private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<bool> result)
         {
-            context.Done<object>(null);
+            bool qnaMessageWasHandled = await result ;
+
+            if (!qnaMessageWasHandled)
+            {
+                await context.PostAsync("Sorry, we couldn't work out what you were trying to ask or do. Try typing 'Help'.");
+            }
+
+            context.Wait(MessageReceived);
 
         }
         private async Task ResumeAfterFormOption(IDialogContext context, IAwaitable<object> result)
