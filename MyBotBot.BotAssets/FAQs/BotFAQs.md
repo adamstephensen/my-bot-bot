@@ -141,3 +141,16 @@ I'm still working on this… check back soon.
 
 ## How do I build a multi-lingual bot ? 
 Check out this link https://desflanagan.wordpress.com/2016/10/25/build-a-multi-language-bot/ 
+
+## Where does Microsoft have Azure Datacentres ? 
+
+Azure has data centres all over the world. Check out this awesome map http://azuredatacentermap.azurewebsites.net/ 
+
+## Where is the data for my bot? 
+Great question.
+
+It is particularly important for customers who operate in highly regulated industries, or in countries with data protection laws, to know the geographic location of the data that they have entrusted to a Microsoft cloud service. Microsoft also understands that some customers must maintain their data in a specific geographic location, such as within the European Union (EU). To that end, Microsoft maintains an ever-expanding network of datacenters around the globe, and verifies that each datacenter meets stringent security requirements.
+
+The key to this answer is found on two pages
+1. https://www.microsoft.com/en-us/trustcenter/privacy/where-your-data-is-located
+2. http://azuredatacentermap.azurewebsites.net/ (Make sure to scroll down to under the map)
