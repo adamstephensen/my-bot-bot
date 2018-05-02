@@ -85,7 +85,7 @@ You can configure your bot to connect a user with a real person using the human 
 https://blogs.msdn.microsoft.com/jamiedalton/2017/08/10/microsoft-bot-framework-handing-off-to-a-human-for-agentssupervisors-with-c-and-the-botbuilder-sdk/
 
 ## How do I go to Kudu for by bot ? 
-Just go to https://<your-bot-name->.scm.azurewebsites.net
+Just go to https://(your-bot-name).scm.azurewebsites.net
 
 ## How do I handle global messages ?
 You implement global messages like this https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-global-handlers
@@ -141,3 +141,23 @@ I'm still working on this… check back soon.
 
 ## How do I build a multi-lingual bot ? 
 Check out this link https://desflanagan.wordpress.com/2016/10/25/build-a-multi-language-bot/ 
+
+## Where does Microsoft have Azure Datacentres ? 
+
+Azure has data centres all over the world. Check out this awesome map http://azuredatacentermap.azurewebsites.net/ 
+
+## Where is the data for my bot? 
+Great question.
+
+The list of services and the regions they are available in can be found here: https://azure.microsoft.com/en-au/regions/services/ 
+
+It is particularly important for customers who operate in highly regulated industries, or in countries with data protection laws, to know the geographic location of the data that they have entrusted to a Microsoft cloud service. Microsoft also understands that some customers must maintain their data in a specific geographic location, such as within the European Union (EU). To that end, Microsoft maintains an ever-expanding network of datacenters around the globe, and verifies that each datacenter meets stringent security requirements.
+
+The key to this answer is found on two pages
+1. https://www.microsoft.com/en-us/trustcenter/privacy/where-your-data-is-located
+2. http://azuredatacentermap.azurewebsites.net/ (Make sure to scroll down to under the map)
+
+It is also worth checking out 
+1. The privacy statement https://privacy.microsoft.com/en-us/privacystatement 
+2. Cog Services T&Cs https://azure.microsoft.com/en-us/support/legal/cognitive-services-terms/ 
+
