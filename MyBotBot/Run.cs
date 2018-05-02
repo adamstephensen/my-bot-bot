@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Bot.Builder.Azure;
@@ -8,6 +9,9 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using MyBotBot.BotAssets.Dialogs;
 using Newtonsoft.Json;
+using Microsoft.Bot.Builder.Internals.Fibers;
+using Microsoft.Bot.Builder.Dialogs.Internals;
+using Microsoft.Bot.Builder.Scorables;
 
 namespace MyBotBot
 {
@@ -21,6 +25,12 @@ namespace MyBotBot
             using (BotService.Initialize())
             {
                 log.Info($"Webhook was triggered! - messages");
+
+                Conversation.UpdateContainer(builder =>
+                {
+                    builder.RegisterModule(new ReflectionSurrogateModule());
+                    builder.RegisterModule<GlobalMessageHandlersBotModule>();
+                });
 
                 string jsonContent = await req.Content.ReadAsStringAsync();
                 var activity = JsonConvert.DeserializeObject<Activity>(jsonContent);
@@ -48,6 +58,21 @@ namespace MyBotBot
                 return req.CreateResponse(HttpStatusCode.Accepted);
             }
 
+        }
+    }
+
+    public class GlobalMessageHandlersBotModule : Module
+    {
+        protected override void Load(ContainerBuilder builder)
+        {
+            base.Load(builder);
+
+            //register other scorables here
+
+            builder
+                .Register(c => new CancelScorable(c.Resolve<IDialogTask>()))
+                .As<IScorable<IActivity, double>>()
+                .InstancePerLifetimeScope();
         }
     }
 
