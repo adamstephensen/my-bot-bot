@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using MyBotBot.BotAssets.Extensions;
 using System.Configuration;
+using System;
 
 namespace MyBotBot.BotAssets.Dialogs
 {
+    [Serializable]
     class BotQnaDialog : QnAMakerDialog
     {
         public BotQnaDialog() : base(new QnAMakerService(
@@ -22,21 +19,25 @@ namespace MyBotBot.BotAssets.Dialogs
         {
         }
 
-
-        public Task StartAsync(IDialogContext context)
+        protected override async Task DefaultWaitNextMessageAsync(IDialogContext context, IMessageActivity message, QnAMakerResults result)
         {
-            context.Wait(MessageReceivedAsync);
+            if (result.Answers.Count >= 1)
+            {
+                context.Done(message);
+            }
+            else
+            {
+                string response = $"Sorry, I did not find anything for '{message.Text}'.";
 
-            return Task.CompletedTask;
+                await context.PostAsync(response); //.ToUserLocale(context) to add language translation
+                context.Done(message);
+            }
         }
 
-        private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
+        protected override async Task RespondFromQnAMakerResultAsync(IDialogContext context, IMessageActivity message, QnAMakerResults result)
         {
-            var activity = await result as IMessageActivity;
-
-            // TODO: Put logic for handling user message here
-
-            context.Wait(MessageReceivedAsync);
+            string response = result.Answers.First().Answer;
+            await context.PostAsync(response); //.ToUserLocale(context) to add language translation
         }
     }
 }

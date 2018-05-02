@@ -25,18 +25,14 @@ namespace MyBotBot.BotAssets.Dialogs
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
         {
-            string message = $"Sorry, I did not understand '{result.Query}'. Type 'help' if you need assistance.";
-
-            await context.PostAsync(message);
-
-            context.Wait(this.MessageReceived);
-
+            //You COULD put a message in here... but we handle it in QnA maker
+            //string message = $"Sorry, I did not understand '{result.Query}'. Type 'help' if you need assistance.";
+            //await context.PostAsync(message);
+            
             // You can forward to QnA Dialog, and let Qna Maker handle the user's query if no intent is found
             await context.Forward(new BotQnaDialog(), ResumeAfterQnaDialog, context.Activity, CancellationToken.None);
-
-            context.Wait(this.MessageReceived);
+            
         }
-
 
         [LuisIntent("Help")]
         public async Task Help(IDialogContext context, LuisResult result)
@@ -56,16 +52,14 @@ namespace MyBotBot.BotAssets.Dialogs
             context.Call(new SuggestionDialog(), ResumeAfterFormOption);
         }
 
-
         private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<object> result)
         {
-            context.Done<object>(null);
+            context.Wait(MessageReceived);
 
         }
         private async Task ResumeAfterFormOption(IDialogContext context, IAwaitable<object> result)
         {
-            context.Done<object>(null);
-
+            context.Wait(MessageReceived);
         }
 
     }
