@@ -7,6 +7,7 @@ using Microsoft.Bot.Connector;
 using System.Threading;
 using MyBotBot.BotAssets.Extensions;
 using System.Configuration;
+using Microsoft.Bot.Builder.FormFlow;
 
 namespace MyBotBot.BotAssets.Dialogs
 {
@@ -19,8 +20,10 @@ namespace MyBotBot.BotAssets.Dialogs
                 ConfigurationManager.AppSettings[AppSettings.LuisAppId],
                 ConfigurationManager.AppSettings[AppSettings.LuisSubscriptionKey])))
         {
-        }        
-        
+        }
+
+        // Forms.RegisterForm registerForm;
+
         [LuisIntent("")]
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
@@ -28,10 +31,10 @@ namespace MyBotBot.BotAssets.Dialogs
             //You COULD put a message in here... but we handle it in QnA maker
             //string message = $"Sorry, I did not understand '{result.Query}'. Type 'help' if you need assistance.";
             //await context.PostAsync(message);
-            
+
             // You can forward to QnA Dialog, and let Qna Maker handle the user's query if no intent is found
             await context.Forward(new BotQnaDialog(), ResumeAfterQnaDialog, context.Activity, CancellationToken.None);
-            
+
         }
 
         [LuisIntent("Help")]
@@ -48,9 +51,20 @@ namespace MyBotBot.BotAssets.Dialogs
             string message = "Thanks for offering to make a suggestion. What would you like to suggest?";
 
             await context.PostAsync(message);
+            
+            context.Call(new SuggestionDialog(), ResumeAfterFormOption);
+        }
+
+        [LuisIntent("Register")]
+        public async Task Register(IDialogContext context, LuisResult result)
+        {
+            string message = "Thanks for offering to make a suggestion. What would you like to suggest?";
+
+            await context.PostAsync(message);
 
             context.Call(new SuggestionDialog(), ResumeAfterFormOption);
         }
+
 
         private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<object> result)
         {
@@ -61,6 +75,8 @@ namespace MyBotBot.BotAssets.Dialogs
         {
             context.Wait(MessageReceived);
         }
+        
+     
 
     }
 }

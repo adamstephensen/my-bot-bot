@@ -130,6 +130,7 @@
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Dialogs\SuggestionDialog.cs" />
     <Compile Include="Extensions\AppSettings.cs" />
+    <Compile Include="Forms\RegisterForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
