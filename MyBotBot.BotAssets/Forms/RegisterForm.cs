@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBotBot.BotAssets.Forms
 {
-
-    public enum registerFor { AzureAustraliaSlackChannel, NewsAboutAzure };
     
-
     [Serializable]
     public class RegisterForm
     {
@@ -18,10 +15,7 @@ namespace MyBotBot.BotAssets.Forms
         public string name { get; set; }
 
         [Prompt("What is your email address?")]
-        public string emailAddress { get; set; }
-
-        [Prompt("What would you like to register for?")]
-        public registerFor? registerFor { get; set; }
+        public string emailAddress { get; set; }       
         
         public static IForm<RegisterForm> BuildForm()
         {

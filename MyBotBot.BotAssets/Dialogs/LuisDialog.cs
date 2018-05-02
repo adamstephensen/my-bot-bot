@@ -8,6 +8,7 @@ using System.Threading;
 using MyBotBot.BotAssets.Extensions;
 using System.Configuration;
 using Microsoft.Bot.Builder.FormFlow;
+using MyBotBot.BotAssets.Forms;
 
 namespace MyBotBot.BotAssets.Dialogs
 {
@@ -22,6 +23,8 @@ namespace MyBotBot.BotAssets.Dialogs
         {
         }
 
+        RegisterForm registerForm;
+
         // Forms.RegisterForm registerForm;
 
         [LuisIntent("")]
@@ -35,6 +38,10 @@ namespace MyBotBot.BotAssets.Dialogs
             // You can forward to QnA Dialog, and let Qna Maker handle the user's query if no intent is found
             await context.Forward(new BotQnaDialog(), ResumeAfterQnaDialog, context.Activity, CancellationToken.None);
 
+        }
+        private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Wait(MessageReceived);
         }
 
         [LuisIntent("Help")]
@@ -52,27 +59,27 @@ namespace MyBotBot.BotAssets.Dialogs
 
             await context.PostAsync(message);
             
-            context.Call(new SuggestionDialog(), ResumeAfterFormOption);
+            context.Call(new SuggestionDialog(), ResumeAfterSuggestion);
+        }
+        private async Task ResumeAfterSuggestion(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Wait(MessageReceived);
         }
 
         [LuisIntent("Register")]
         public async Task Register(IDialogContext context, LuisResult result)
         {
-            string message = "Thanks for offering to make a suggestion. What would you like to suggest?";
 
-            await context.PostAsync(message);
-
-            context.Call(new SuggestionDialog(), ResumeAfterFormOption);
+            await context.PostAsync("Thanks for asking to register.");
+            this.registerForm = new RegisterForm();
+            var myform = new FormDialog<RegisterForm>(this.registerForm, Forms.RegisterForm.BuildForm, FormOptions.PromptInStart);
+            context.Call(myform, this.ResumeAfterRegister);
         }
 
 
-        private async Task ResumeAfterQnaDialog(IDialogContext context, IAwaitable<object> result)
+        private async Task ResumeAfterRegister(IDialogContext context, IAwaitable<object> result)
         {
-            context.Wait(MessageReceived);
-
-        }
-        private async Task ResumeAfterFormOption(IDialogContext context, IAwaitable<object> result)
-        {
+            await context.PostAsync("Thanks for registering");
             context.Wait(MessageReceived);
         }
         
