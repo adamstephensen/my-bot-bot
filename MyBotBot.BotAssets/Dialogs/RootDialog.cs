@@ -1,6 +1,7 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace MyBotBot.BotAssets.Dialogs
     {
         public Task StartAsync(IDialogContext context)
         {
+            Trace.TraceInformation("RootDialog.Start");
+            
             context.Wait(MessageReceivedAsync);
             return Task.CompletedTask;
         }

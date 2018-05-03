@@ -14,6 +14,7 @@ using Microsoft.Bot.Builder.Dialogs.Internals;
 using Microsoft.Bot.Builder.Scorables;
 using System;
 using System.Linq;
+using System.Diagnostics;
 
 namespace MyBotBot
 {
@@ -26,7 +27,8 @@ namespace MyBotBot
             // Initialize the azure bot
             using (BotService.Initialize())
             {
-                log.Info($"Webhook was triggered! - messages");
+                log.Info($"Bot is intialised!");
+                
 
                 Conversation.UpdateContainer(builder =>
                 {
@@ -44,6 +46,9 @@ namespace MyBotBot
                     {
                         case ActivityTypes.Message:
                             //here is where we will navigate to root dialogue
+                            Trace.TraceInformation("run.Run");
+                            log.Info($"Navigate to RootDialog.");
+
                             await Conversation.SendAsync(activity, () => new RootDialog());
 
                             //var client = new ConnectorClient(new Uri(activity.ServiceUrl));
@@ -53,7 +58,7 @@ namespace MyBotBot
 
                             break;
                         case ActivityTypes.ConversationUpdate:
-
+                            log.Info($"Conversation update.");
                             // Handle conversation state changes, like members being added and removed
                             // Use Activity.MembersAdded and Activity.MembersRemoved and Activity.Action for info
                             // Not available in all channels
