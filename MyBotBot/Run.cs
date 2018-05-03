@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 using Microsoft.Bot.Builder.Internals.Fibers;
 using Microsoft.Bot.Builder.Dialogs.Internals;
 using Microsoft.Bot.Builder.Scorables;
+using System;
+using System.Linq;
 
 namespace MyBotBot
 {
@@ -20,7 +22,7 @@ namespace MyBotBot
         [FunctionName("messages")]
         public static async Task<object> Run([HttpTrigger(WebHookType = "genericJson")]HttpRequestMessage req, TraceWriter log)
         {
-            
+
             // Initialize the azure bot
             using (BotService.Initialize())
             {
@@ -50,6 +52,25 @@ namespace MyBotBot
                             //await client.Conversations.ReplyToActivityAsync(triggerReply);
 
                             break;
+                        case ActivityTypes.ConversationUpdate:
+
+                            // Handle conversation state changes, like members being added and removed
+                            // Use Activity.MembersAdded and Activity.MembersRemoved and Activity.Action for info
+                            // Not available in all channels
+
+                            if (activity.MembersAdded.Any(o => o.Id == activity.Recipient.Id))
+                            {
+                                var reply = activity.CreateReply("Hi ! I'm a bot about Bots.");
+                                
+                                reply.AddHeroCard("Feel free to ask me a question... or you can ..", MenuHelpers.getMenuOptions("Home"));
+
+                                ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+
+                                await connector.Conversations.ReplyToActivityAsync(reply);
+                            }
+
+                            break;
+
                         default:
                             log.Error($"Unknown activity type ignored: {activity.GetActivityType()}");
                             break;

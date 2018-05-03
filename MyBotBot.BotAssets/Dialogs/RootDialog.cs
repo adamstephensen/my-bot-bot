@@ -18,6 +18,7 @@ namespace MyBotBot.BotAssets.Dialogs
         {
             var activity = await result as Activity;
             await context.Forward(new LuisDialog(), ResumeAftelLuisDialog, activity, CancellationToken.None);
+            
         }
         private async Task ResumeAftelLuisDialog(IDialogContext context, IAwaitable<object> result)
         {
