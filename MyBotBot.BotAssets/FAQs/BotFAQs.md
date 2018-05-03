@@ -94,6 +94,11 @@ You implement global messages like this https://docs.microsoft.com/en-us/azure/b
 The trick is to put them into local.settings.json on your dev machine and then to read them from App Settings in Azure.
 Check out https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#environment-variables for more info. 
 
+## Where can I find training about bots ? 
+This course is a few years old... but covers all the basics in detail. 
+https://mva.microsoft.com/en-us/training-courses/developing-intelligent-bots-from-zero-to-hero-17797
+It is well worth a watch.
+
 ## How can I learn about async await for asynchronous programming ? 
 Check out this reference for async / await https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/await?
 
