@@ -15,6 +15,8 @@ using Microsoft.Bot.Builder.Scorables;
 using System;
 using System.Linq;
 using System.Diagnostics;
+using System.Configuration;
+using System;
 
 namespace MyBotBot
 {
@@ -28,8 +30,7 @@ namespace MyBotBot
             using (BotService.Initialize())
             {
                 log.Info($"Bot is intialised!");
-                
-
+            
                 Conversation.UpdateContainer(builder =>
                 {
                     builder.RegisterModule(new ReflectionSurrogateModule());
