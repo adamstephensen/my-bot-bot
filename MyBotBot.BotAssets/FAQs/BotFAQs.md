@@ -166,3 +166,24 @@ It is also worth checking out
 1. The privacy statement https://privacy.microsoft.com/en-us/privacystatement 
 2. Cog Services T&Cs https://azure.microsoft.com/en-us/support/legal/cognitive-services-terms/ 
 
+## What are adaptive cards?
+Adaptive Cards are a new way for developers to exchange card content in a common and consistent way.
+See the official page at http://adaptivecards.io/ for more.
+Here is the video introduction from the Build conference https://www.youtube.com/watch?v=VjIhd_9Az9w
+
+## Where can I find out information about the Bot Framework v4? 
+
+v4 is the next version of the Bot Framework. It's still in preview.
+
+Bot Framework v4 can be found on GitHub here https://github.com/Microsoft/botbuilder-dotnet
+
+Here is Hello World in Bot Framework v4. https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/
+
+Also, check out this video https://www.youtube.com/watch?v=SL077rQQQMg
+
+
+## What is Chatdown?
+Chatdown allows you to 
+- export a conversation with a bot as a transcript that can be re-loaded into the emulator at a later point for feedback / analysis
+- create chat transcripts and load them into the bot emulator for mocking up bots 
+Check out this video for more https://www.youtube.com/playlist?list=PLz6hh7iUxR21lAh7a3yjcRwZN6FnDUxpr
