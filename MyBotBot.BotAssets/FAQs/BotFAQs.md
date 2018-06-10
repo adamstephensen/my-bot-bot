@@ -1,1 +1,1 @@
-## Bot FAQs moved to https://github.com/adamstephensen/azure-faqs/blob/master/bot-service.md
+## Bot FAQs moved to https://github.com/adamstephensen/faqs/blob/master/azure/bot-service.md
