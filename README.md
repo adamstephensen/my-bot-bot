@@ -13,7 +13,7 @@ This repository has been put together to demonstrate some common scenarios using
 - How to handle Global Messages
 
 ## Where can I find out more
-Check out the [Bot FAQs](https://github.com/adamstephensen/my-bot-bot/blob/master/MyBotBot.BotAssets/FAQs/BotFAQs.md)
+Check out the [Bot FAQs](https://github.com/adamstephensen/faqs/blob/master/azure/bot-service.md)
 
 ## Disclaimer
 
